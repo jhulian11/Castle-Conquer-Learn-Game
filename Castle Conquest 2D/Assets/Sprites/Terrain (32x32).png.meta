@@ -47,7 +47,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -2141,16 +2141,16 @@ TextureImporter:
       Terrain (32x32)_85: -1319799777
       Terrain (32x32)_4: -853706997
       Terrain (32x32)_1: -611125791
+      Terrain (32x32)_86: 1090586275
       Terrain (32x32)_11: 1835479552
-      Terrain (32x32)_55: 1446424610
       Terrain (32x32)_71: 1266053939
       Terrain (32x32)_29: 1027126795
       Terrain (32x32)_25: -2087357604
       Terrain (32x32)_39: -1896546729
-      Terrain (32x32)_86: 1090586275
+      Terrain (32x32)_55: 1446424610
       Terrain (32x32)_28: -1721615153
-      Terrain (32x32)_60: 1183420306
       Terrain (32x32)_62: 1236282133
+      Terrain (32x32)_60: 1183420306
       Terrain (32x32)_81: -1018765363
       Terrain (32x32)_78: -436494108
       Terrain (32x32)_74: -1343659634
@@ -2164,10 +2164,10 @@ TextureImporter:
       Terrain (32x32)_3: 883941233
       Terrain (32x32)_64: 1038787470
       Terrain (32x32)_2: -380824208
-      Terrain (32x32)_18: 1417146437
       Terrain (32x32)_91: 306336026
-      Terrain (32x32)_46: -1237947585
+      Terrain (32x32)_18: 1417146437
       Terrain (32x32)_56: 880331349
+      Terrain (32x32)_46: -1237947585
       Terrain (32x32)_66: -1767608475
       Terrain (32x32)_35: -1095742484
       Terrain (32x32)_92: -1363542038
