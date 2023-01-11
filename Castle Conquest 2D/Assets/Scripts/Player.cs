@@ -8,11 +8,16 @@ public class Player : MonoBehaviour
 {
 
     [SerializeField]
-    private float runSpeed = 10f;
+    private float runSpeed = 10f;  
+    [SerializeField]
+    private float jumpSpeed = 6.8f;
+
     [SerializeField]
     private Animator playerAnimator;
 
     private Rigidbody2D myRigidbody2D;
+    private Collider2D myCollider2D;
+    private Collider2D myFeetCollider2D;
     //private Transform myTransform;
 
     void Start()
@@ -20,11 +25,30 @@ public class Player : MonoBehaviour
         myRigidbody2D = GetComponent<Rigidbody2D>();
         //myTransform = GetComponent<Transform>();
         playerAnimator = GetComponent<Animator>();
+        myCollider2D = GetComponent<BoxCollider2D>();
+        myFeetCollider2D = GetComponent<PolygonCollider2D>();
     }
 
     void Update()
     {
+      
+        Jump();
         Run();
+
+    }
+
+    private void Jump()
+    {
+        if (!myFeetCollider2D.IsTouchingLayers(LayerMask.GetMask("Ground")))
+            return;
+
+        var isJumping = CrossPlatformInputManager.GetButtonDown("Jump");
+
+        if (isJumping)
+        {
+            Vector2 jumpVelocity = new Vector2(myRigidbody2D.velocity.x, jumpSpeed);
+            myRigidbody2D.velocity = jumpVelocity;
+        }
     }
 
     private void Run()
