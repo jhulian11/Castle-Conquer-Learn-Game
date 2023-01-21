@@ -12,9 +12,12 @@ public class Player : MonoBehaviour
     private float runSpeed = 10f;  
     [SerializeField]
     private float jumpSpeed = 6.8f;
-
     [SerializeField]
-    private float climbSpeed = 1.8f;
+    private Vector2 hitKick = new Vector2(50f, 60f);
+    [SerializeField]
+    private float climbSpeed = 1.8f;  
+    [SerializeField]
+    private float timeHurted = 1.5f;
 
     [SerializeField]
     private Animator playerAnimator;
@@ -23,6 +26,8 @@ public class Player : MonoBehaviour
     private Collider2D myCollider2D;
     private Collider2D myFeetCollider2D;
     //private Transform myTransform;
+
+    private bool isHurting = false;
 
     void Start()
     {
@@ -35,14 +40,32 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-      
-        Jump();
-        Run();
-        Climb();
+        if (!isHurting)
+        {
+            Jump();
+            Run();
+            Climb();
 
-
+            if (myCollider2D.IsTouchingLayers(LayerMask.GetMask("Enemy")))
+                PlayerHit();
+        }
     }
 
+    private void PlayerHit()
+    {
+        myRigidbody2D.velocity = hitKick * new Vector2(-transform.localScale.x, 1f);
+        playerAnimator.SetTrigger("Hitting");
+        isHurting = true;
+
+        StartCoroutine(StopHurting());
+    }
+
+    IEnumerator StopHurting()
+    {
+        yield return new WaitForSeconds(timeHurted);
+
+        isHurting = false;
+    }
     private void Jump()
     {
         if (!myFeetCollider2D.IsTouchingLayers(LayerMask.GetMask("Ground")) && !myCollider2D.IsTouchingLayers(LayerMask.GetMask("Climb")))
