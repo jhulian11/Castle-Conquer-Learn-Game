@@ -81,11 +81,13 @@ public class Player : MonoBehaviour
     {
         if (!runningHorizontaly) return;
 
-        if (Mathf.Sign(myRigidbody2D.velocity.x) > 0)
-            transform.localScale = new Vector3(1, transform.localScale.y, transform.localScale.z);
+        transform.localScale = new Vector2(Mathf.Sign(myRigidbody2D.velocity.x),1f);
 
-        else if(Mathf.Sign(myRigidbody2D.velocity.x) < 0)
-            transform.localScale = new Vector3(-1, transform.localScale.y, transform.localScale.z);
+        //if (Mathf.Sign(myRigidbody2D.velocity.x) > 0)
+        //    transform.localScale = new Vector3(1, transform.localScale.y, transform.localScale.z);
+
+        //else if(Mathf.Sign(myRigidbody2D.velocity.x) < 0)
+        //    transform.localScale = new Vector3(-1, transform.localScale.y, transform.localScale.z);
     }
 
     private void Climb()
