@@ -40,6 +40,7 @@ public class Player : MonoBehaviour
         Run();
         Climb();
 
+
     }
 
     private void Jump()
@@ -81,10 +82,10 @@ public class Player : MonoBehaviour
         if (!runningHorizontaly) return;
 
         if (Mathf.Sign(myRigidbody2D.velocity.x) > 0)
-            transform.localRotation = new Quaternion(transform.localRotation.x, 0, transform.localRotation.z, transform.localRotation.w);
+            transform.localScale = new Vector3(1, transform.localScale.y, transform.localScale.z);
 
-        else if(Mathf.Sign(myRigidbody2D.velocity.x) < 0) 
-            transform.localRotation = new Quaternion(transform.localRotation.x, -180, transform.localRotation.z, transform.localRotation.w);
+        else if(Mathf.Sign(myRigidbody2D.velocity.x) < 0)
+            transform.localScale = new Vector3(-1, transform.localScale.y, transform.localScale.z);
     }
 
     private void Climb()
@@ -103,6 +104,7 @@ public class Player : MonoBehaviour
 
         isClimbing = myRigidbody2D.velocity.y != 0;
         ChangingClimbingState(isClimbing);
+
     }
 
     private void ChangingClimbingState(bool climbing)

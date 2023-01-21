@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1142923939}
   - component: {fileID: 5990382502324266382}
   - component: {fileID: 2090080129}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1700174195
-  m_SortingLayer: 2
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 498352719, guid: b759fd26fcf34cd49a5aa40a26b4c9a2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -143,7 +143,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.076042175, y: -0.0753448}
+  m_Offset: {x: 0.07604241, y: -0.0753448}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -154,7 +154,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.868742, y: 0.8808317}
+  m_Size: {x: 0.8138337, y: 0.8808317}
   m_EdgeRadius: 0
 --- !u!114 &5990382502324266382
 MonoBehaviour:
@@ -169,7 +169,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   runSpeed: 8
-  jumpSpeed: 8
+  jumpSpeed: 12
+  climbSpeed: 1.7
   playerAnimator: {fileID: 0}
 --- !u!60 &2090080129
 PolygonCollider2D:
@@ -196,12 +197,12 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0.005990863, y: -0.22583228}
-      - {x: 0.021059036, y: -0.25070632}
-      - {x: -0.09652543, y: -0.23826924}
-      - {x: -0.02441907, y: -0.29451218}
-      - {x: -0.16122699, y: -0.5542296}
-      - {x: 0.1631921, y: -0.41742167}
-      - {x: 0.322406, y: -0.5741192}
-      - {x: 0.26022118, y: -0.28257844}
-      - {x: 0.07265803, y: -0.23877263}
+    - - {x: 0.055241466, y: -0.30194718}
+      - {x: 0.0076270103, y: -0.33129847}
+      - {x: -0.11891246, y: -0.314384}
+      - {x: -0.0960567, y: -0.37062696}
+      - {x: -0.15124965, y: -0.5432304}
+      - {x: 0.14361411, y: -0.5429548}
+      - {x: 0.29554242, y: -0.54316604}
+      - {x: 0.26022118, y: -0.31839725}
+      - {x: 0.14429566, y: -0.31041014}
