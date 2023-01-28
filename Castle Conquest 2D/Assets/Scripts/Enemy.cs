@@ -8,20 +8,45 @@ public class Enemy : MonoBehaviour
 {
     [SerializeField] private float enemyRunSpeed = 5f;
     private Rigidbody2D enemRigidbody2D;
+    private Collider2D enemyCollider2D;
+    private Collider2D enemyHitCollider2D;
+
+    private Animator myAnimator;
     // Start is called before the first frame update
     void Start()
     {
+        myAnimator = GetComponent<Animator>();
         enemRigidbody2D = GetComponent<Rigidbody2D>();
+        enemyCollider2D =GetComponent<BoxCollider2D>();
+        enemyHitCollider2D = GetComponent<CapsuleCollider2D>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (IsFacingLeft())
-         enemRigidbody2D.velocity = new Vector2(-enemyRunSpeed, enemRigidbody2D.velocity.y);
+        EnemyMovement();
+    }
 
-        else enemRigidbody2D.velocity = new Vector2(enemyRunSpeed, enemRigidbody2D.velocity.y);
-        
+    public void Dying()
+    {
+       myAnimator.SetTrigger("Die");
+       enemyHitCollider2D.enabled = false;
+       enemyCollider2D.enabled = false;
+       enemRigidbody2D.bodyType = RigidbodyType2D.Static;
+
+       StartCoroutine(DestroyEnemy());
+    }
+
+    IEnumerator DestroyEnemy()
+    {
+        yield return new WaitForSeconds(3f);
+        Destroy(gameObject);
+    }
+
+    private void EnemyMovement()
+    {
+        if (enemRigidbody2D)
+            enemRigidbody2D.velocity = IsFacingLeft() ? new Vector2(-enemyRunSpeed, enemRigidbody2D.velocity.y) : new Vector2(enemyRunSpeed, enemRigidbody2D.velocity.y);
     }
 
     private void OnTriggerExit2D(Collider2D collision)
