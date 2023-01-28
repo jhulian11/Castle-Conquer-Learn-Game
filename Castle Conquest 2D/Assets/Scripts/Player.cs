@@ -51,15 +51,14 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void PlayerHit()
+    public void PlayerHit()
     {
         myRigidbody2D.velocity = hitKick * new Vector2(-transform.localScale.x, 1f);
         playerAnimator.SetTrigger("Hitting");
         isHurting = true;
 
-        StartCoroutine(StopHurting());
+        StartCoroutine(StopHurting()); 
     }
-
     IEnumerator StopHurting()
     {
         yield return new WaitForSeconds(timeHurted);
