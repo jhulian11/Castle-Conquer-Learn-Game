@@ -42,6 +42,8 @@ public class Player : MonoBehaviour
         playerAnimator = GetComponent<Animator>();
         myCollider2D = GetComponent<BoxCollider2D>();
         myFeetCollider2D = GetComponent<PolygonCollider2D>();
+
+        playerAnimator.SetTrigger("Appearing");
     }
 
     void Update()
@@ -63,9 +65,21 @@ public class Player : MonoBehaviour
     private void EnterAnotherLevel()
     {
         if (myCollider2D.IsTouchingLayers(LayerMask.GetMask("Interactable")) && CrossPlatformInputManager.GetButtonDown("Vertical"))
-        {
-           FindObjectOfType<ExitDoor>().StartLoadingNextLevel();
+        { 
+            playerAnimator.SetTrigger("Dessapearing");
         }
+    }
+
+    public void LoadNextLevel()
+    {
+        FindObjectOfType<ExitDoor>().StartLoadingNextLevel();
+        TurnOffRenderer();
+
+    }
+
+    public void TurnOffRenderer()
+    {
+        GetComponent<SpriteRenderer>().enabled = false;
     }
 
     private void Attack()
