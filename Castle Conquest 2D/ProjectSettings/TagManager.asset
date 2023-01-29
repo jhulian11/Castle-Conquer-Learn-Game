@@ -15,7 +15,7 @@ TagManager:
   - Enemy
   - Ground
   - World Confiner
-  - 
+  - Interactable
   - 
   - 
   - 
@@ -49,6 +49,9 @@ TagManager:
     locked: 0
   - name: ClimbingLayer
     uniqueID: 674217069
+    locked: 0
+  - name: Interactable
+    uniqueID: 2432541119
     locked: 0
   - name: Enemy
     uniqueID: 970596391

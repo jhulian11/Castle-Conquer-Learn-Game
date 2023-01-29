@@ -22,7 +22,8 @@ public class Player : MonoBehaviour
     [SerializeField]
     private Transform hurtBox; 
     [SerializeField]
-    private float attackRadius = 3f;
+    private float attackRadius = 3f; 
+    
 
     private Animator playerAnimator;
 
@@ -53,6 +54,16 @@ public class Player : MonoBehaviour
 
             if (myCollider2D.IsTouchingLayers(LayerMask.GetMask("Enemy")))
                 PlayerHit();
+        }
+
+        EnterAnotherLevel();
+    }
+
+    private void EnterAnotherLevel()
+    {
+        if (myCollider2D.IsTouchingLayers(LayerMask.GetMask("Interactable")) && CrossPlatformInputManager.GetButtonDown("Vertical"))
+        {
+           FindObjectOfType<ExitDoor>().StartLoadingNextLevel();
         }
     }
 
