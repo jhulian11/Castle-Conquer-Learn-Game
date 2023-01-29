@@ -119,6 +119,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c21bba4a4cc1994990673133e601697, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  heartPickUpSFX: {fileID: 8300000, guid: 74787051d3ffb0d419d228a5c24b99c8, type: 3}
 --- !u!58 &6781862187844607817
 CircleCollider2D:
   m_ObjectHideFlags: 0
