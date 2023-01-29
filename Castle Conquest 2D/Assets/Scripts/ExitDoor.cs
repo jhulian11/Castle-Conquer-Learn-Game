@@ -18,7 +18,7 @@ public class ExitDoor : MonoBehaviour
     public void StartLoadingNextLevel()
     {
         GetComponent<Animator>().SetTrigger("Close");
-
+        FindObjectOfType<Player>().isLoading = true;
         StartCoroutine(LoadNextLevel());
 
     }

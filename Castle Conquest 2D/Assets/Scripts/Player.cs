@@ -33,6 +33,7 @@ public class Player : MonoBehaviour
     //private Transform myTransform;
 
     private bool isHurting = false;
+    public bool isLoading = false;
 
     void Start()
     {
@@ -45,7 +46,7 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        if (!isHurting)
+        if (!isHurting && !isLoading)
         {
             Jump();
             Run();
