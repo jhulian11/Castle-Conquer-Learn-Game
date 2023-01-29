@@ -1,12 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Net.Mime;
 using System.Security.Cryptography;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameSession : MonoBehaviour
 {
-    [SerializeField] private int playerLives = 3;
+    [SerializeField] public int playerLives = 3, score = 0;
+    [SerializeField] public int maxLife = 3;
+    [SerializeField]  TextMeshProUGUI scoreText,livesText;
 
     private void Awake()
     {
@@ -19,6 +24,11 @@ public class GameSession : MonoBehaviour
         
     }
 
+    private void Start()
+    {
+        livesText.text = playerLives.ToString();
+        scoreText.text = score.ToString();
+    }
     public void ProcessPlayerDeath()
     {
         if (playerLives > 1)
@@ -32,9 +42,22 @@ public class GameSession : MonoBehaviour
         }
     }
 
+    public void AddToScore(int value)
+    {
+        score += value;
+        scoreText.text = score.ToString();
+    }
     private void TakeLive()
     {
         playerLives--;
+        livesText.text = playerLives.ToString();
+    }
+
+    public void AddLive(int value)
+    {
+        playerLives += value;
+        livesText.text = playerLives.ToString();
+
     }
 
     private void ResetGame()
