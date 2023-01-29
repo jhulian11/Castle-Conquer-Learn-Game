@@ -16,9 +16,14 @@ public class HeartPickUp : MonoBehaviour
 
         if (life + heartValue <= maxLife)
         {
-            AudioSource.PlayClipAtPoint(heartPickUpSFX, Camera.main.transform.position);
-            Destroy(gameObject);
-            gameSession.AddLive(heartValue);
+            if (other.GetType() == typeof(BoxCollider2D))
+            {
+                AudioSource.PlayClipAtPoint(heartPickUpSFX, Camera.main.transform.position);
+                gameSession.AddLive(heartValue);
+                Destroy(gameObject);
+
+            }
+
         }
     }
 }
