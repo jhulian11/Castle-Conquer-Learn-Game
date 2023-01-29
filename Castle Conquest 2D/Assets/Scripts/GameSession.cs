@@ -13,6 +13,7 @@ public class GameSession : MonoBehaviour
     [SerializeField] public int maxLife = 3;
     [SerializeField] TextMeshProUGUI scoreText, livesText;
     [SerializeField] private AudioClip dyingSFX;
+    [SerializeField] private Image[] hearts;
 
 
     private void Awake()
@@ -53,14 +54,30 @@ public class GameSession : MonoBehaviour
     private void TakeLive()
     {
         playerLives--;
+        UpdateHearts();
         livesText.text = playerLives.ToString();
     }
 
     public void AddLive(int value)
     {
         playerLives += value;
+        UpdateHearts();
         livesText.text = playerLives.ToString();
 
+    }
+
+    private void UpdateHearts()
+    {
+        for (int i = 0; i < hearts.Length; i++)
+        {
+            if (i < playerLives)
+            {
+                hearts[i].enabled = true;
+            }
+            else
+                hearts[i].enabled = false;
+
+        }
     }
 
     private void ResetGame()
