@@ -89,7 +89,6 @@ public class Player : MonoBehaviour
         if (CrossPlatformInputManager.GetButtonDown("Fire1"))
         {
             playerAnimator.SetTrigger("Attacking");
-            myAudioSource.PlayOneShot(atackingSFX);
            Collider2D[] enemiesToHit = Physics2D.OverlapCircleAll(hurtBox.position, attackRadius, LayerMask.GetMask("Enemy"));
 
            foreach (var enemy in enemiesToHit)
@@ -97,6 +96,11 @@ public class Player : MonoBehaviour
               enemy.GetComponent<Enemy>().Dying();
            }
         }
+    }
+
+    public void AttackSFX()
+    {
+        myAudioSource.PlayOneShot(atackingSFX);
     }
     public void PlayerHit()
     {
