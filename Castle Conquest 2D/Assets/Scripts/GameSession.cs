@@ -11,7 +11,9 @@ public class GameSession : MonoBehaviour
 {
     [SerializeField] public int playerLives = 3, score = 0;
     [SerializeField] public int maxLife = 3;
-    [SerializeField]  TextMeshProUGUI scoreText,livesText;
+    [SerializeField] TextMeshProUGUI scoreText, livesText;
+    [SerializeField] private AudioClip dyingSFX;
+
 
     private void Awake()
     {
@@ -21,7 +23,7 @@ public class GameSession : MonoBehaviour
             Destroy(gameObject);
         else
             DontDestroyOnLoad(gameObject);
-        
+
     }
 
     private void Start()
@@ -38,6 +40,7 @@ public class GameSession : MonoBehaviour
 
         else
         {
+            AudioSource.PlayClipAtPoint(dyingSFX, Camera.main.transform.position);
             ResetGame();
         }
     }

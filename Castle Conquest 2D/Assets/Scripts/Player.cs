@@ -17,16 +17,17 @@ public class Player : MonoBehaviour
     [SerializeField]
     private float climbSpeed = 1.8f;  
     [SerializeField]
-    private float timeHurted = 1.5f; 
-
+    private float timeHurted = 1.5f;
     [SerializeField]
     private Transform hurtBox; 
     [SerializeField]
-    private float attackRadius = 3f; 
+    private float attackRadius = 3f;    
+    [SerializeField]
+    private AudioClip jumpingSFX,atackingSFX,hitSFX,walkingSFX; 
     
 
     private Animator playerAnimator;
-
+    private AudioSource myAudioSource;
     private Rigidbody2D myRigidbody2D;
     private Collider2D myCollider2D;
     private Collider2D myFeetCollider2D;
@@ -42,6 +43,7 @@ public class Player : MonoBehaviour
         playerAnimator = GetComponent<Animator>();
         myCollider2D = GetComponent<BoxCollider2D>();
         myFeetCollider2D = GetComponent<PolygonCollider2D>();
+        myAudioSource = GetComponent<AudioSource>();
 
         playerAnimator.SetTrigger("Appearing");
     }
@@ -87,6 +89,7 @@ public class Player : MonoBehaviour
         if (CrossPlatformInputManager.GetButtonDown("Fire1"))
         {
             playerAnimator.SetTrigger("Attacking");
+            myAudioSource.PlayOneShot(atackingSFX);
            Collider2D[] enemiesToHit = Physics2D.OverlapCircleAll(hurtBox.position, attackRadius, LayerMask.GetMask("Enemy"));
 
            foreach (var enemy in enemiesToHit)
@@ -99,6 +102,7 @@ public class Player : MonoBehaviour
     {
         FindObjectOfType<GameSession>().ProcessPlayerDeath();
         myRigidbody2D.velocity = hitKick * new Vector2(-transform.localScale.x, 1f);
+        AudioSource.PlayClipAtPoint(hitSFX, Camera.main.transform.position);
         playerAnimator.SetTrigger("Hitting");
         isHurting = true;
 
@@ -122,6 +126,8 @@ public class Player : MonoBehaviour
         {
             Vector2 jumpVelocity = new Vector2(myRigidbody2D.velocity.x, jumpSpeed);
             myRigidbody2D.velocity = jumpVelocity;
+
+            myAudioSource.PlayOneShot(jumpingSFX);
         }
     }
 
@@ -138,6 +144,23 @@ public class Player : MonoBehaviour
 
     }
 
+    private void StepsSFX()
+    {
+        bool playerMovingHorizontal = Mathf.Abs(myRigidbody2D.velocity.x) > Mathf.Epsilon;
+
+        if (playerMovingHorizontal)
+        {
+            if (myFeetCollider2D.IsTouchingLayers(LayerMask.GetMask("Ground")))
+            {
+                myAudioSource.PlayOneShot(walkingSFX);
+            }
+        }
+
+        else
+        {
+            myAudioSource.Stop();
+        }
+    }
     private void ChangingRunningState(bool running)
     {
         playerAnimator.SetBool("Running", running);

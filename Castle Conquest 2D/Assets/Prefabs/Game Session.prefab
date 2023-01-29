@@ -50,6 +50,7 @@ MonoBehaviour:
   maxLife: 3
   scoreText: {fileID: 7320382981151424171}
   livesText: {fileID: 7320382980959373379}
+  dyingSFX: {fileID: 8300000, guid: e841b0e165d024c4bb8f463a46170550, type: 3}
 --- !u!1001 &7914873585183488407
 PrefabInstance:
   m_ObjectHideFlags: 0

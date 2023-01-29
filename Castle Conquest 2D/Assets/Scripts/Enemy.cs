@@ -7,6 +7,7 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     [SerializeField] private float enemyRunSpeed = 5f;
+    [SerializeField] private AudioClip dyingSFX;
     private Rigidbody2D enemRigidbody2D;
     private Collider2D enemyCollider2D;
     private Collider2D enemyHitCollider2D;
@@ -30,6 +31,7 @@ public class Enemy : MonoBehaviour
     public void Dying()
     {
        myAnimator.SetTrigger("Die");
+       AudioSource.PlayClipAtPoint(dyingSFX, Camera.main.transform.position);
        enemyHitCollider2D.enabled = false;
        enemyCollider2D.enabled = false;
        enemRigidbody2D.bodyType = RigidbodyType2D.Static;
@@ -45,7 +47,7 @@ public class Enemy : MonoBehaviour
 
     private void EnemyMovement()
     {
-        if (enemRigidbody2D)
+        if (enemRigidbody2D && enemRigidbody2D.bodyType != RigidbodyType2D.Static)
             enemRigidbody2D.velocity = IsFacingLeft() ? new Vector2(-enemyRunSpeed, enemRigidbody2D.velocity.y) : new Vector2(enemyRunSpeed, enemRigidbody2D.velocity.y);
     }
 

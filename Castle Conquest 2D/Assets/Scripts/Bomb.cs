@@ -7,7 +7,8 @@ public class Bomb : MonoBehaviour
 {
     [SerializeField]
     private float radius = 3f;
-
+    [SerializeField]
+    private AudioClip burningSFX, explodeSFX;
     [SerializeField] private Vector2 explosionForce = new Vector2(200f,100f);
     private Animator myAnimator;
     // Start is called before the first frame update
@@ -25,8 +26,9 @@ public class Bomb : MonoBehaviour
     private void ExplodeBomb()
     {
        Collider2D playerCollider = Physics2D.OverlapCircle(transform.position, radius, LayerMask.GetMask("Player"));
+       AudioSource.PlayClipAtPoint(explodeSFX, Camera.main.transform.position);
 
-       if (playerCollider)
+        if (playerCollider)
        {
            playerCollider.GetComponent<Rigidbody2D>().AddForce(explosionForce);
            playerCollider.GetComponent<Player>().PlayerHit();
@@ -36,6 +38,8 @@ public class Bomb : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         myAnimator.SetTrigger("Burn");
+        AudioSource.PlayClipAtPoint(burningSFX, Camera.main.transform.position);
+
     }
 
     private void DestroyBomb()

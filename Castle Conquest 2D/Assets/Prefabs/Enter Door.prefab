@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5481734586411342140}
   - component: {fileID: 44473409666510060}
   - component: {fileID: 5592521684702911713}
+  - component: {fileID: 1706987197}
   m_Layer: 0
   m_Name: Enter Door
   m_TagString: Untagged
@@ -98,6 +99,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 572eb5dd9b142674587c1873f34203e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  openningDoorSFX: {fileID: 8300000, guid: 77903a77d0e64764c93032ab10a2f20a, type: 3}
+  closingDoorSFX: {fileID: 8300000, guid: 0b31b11f268f2324c96678720d212219, type: 3}
 --- !u!95 &5592521684702911713
 Animator:
   serializedVersion: 5
@@ -118,3 +121,29 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+--- !u!61 &1706987197
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1019481637220760116}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.4375, y: 1.75}
+    newSize: {x: 1.4375, y: 1.75}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.4375, y: 1.75}
+  m_EdgeRadius: 0
