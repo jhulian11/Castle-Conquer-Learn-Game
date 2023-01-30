@@ -148,4 +148,4 @@ MonoBehaviour:
   radius: 3.47
   burningSFX: {fileID: 8300000, guid: 9c554d0ef1752844a9612db3706852a3, type: 3}
   explodeSFX: {fileID: 8300000, guid: 752294dcad85fdf4a9f284ee495bcff9, type: 3}
-  explosionForce: {x: 0, y: 0}
+  explosionForce: {x: 10, y: 10}

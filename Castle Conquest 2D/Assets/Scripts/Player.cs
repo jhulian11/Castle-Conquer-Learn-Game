@@ -13,7 +13,7 @@ public class Player : MonoBehaviour
     [SerializeField]
     private float jumpSpeed = 6.8f;
     [SerializeField]
-    private Vector2 hitKick = new Vector2(50f, 60f);
+    private Vector2 hitKick = new Vector2(20f, 10f);
     [SerializeField]
     private float climbSpeed = 1.8f;  
     [SerializeField]
