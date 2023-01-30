@@ -12,6 +12,17 @@ public class Menu : MonoBehaviour
     }
     public void LoadMainMenu()
     {
+        var gameSession = FindObjectOfType<GameSession>();
+        ResetInformation(gameSession);
         SceneManager.LoadScene(0);
+    }
+
+    private void ResetInformation(GameSession gameSession)
+    {
+        gameSession.playerLives = gameSession.maxLife;
+        gameSession.UpdateHearts();
+        gameSession.livesText.text = gameSession.playerLives.ToString();
+        gameSession.score = 0;
+        gameSession.scoreText.text = "0";
     }
 }

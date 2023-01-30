@@ -11,7 +11,7 @@ public class GameSession : MonoBehaviour
 {
     [SerializeField] public int playerLives = 3, score = 0;
     [SerializeField] public int maxLife = 3;
-    [SerializeField] TextMeshProUGUI scoreText, livesText;
+    [SerializeField] public TextMeshProUGUI scoreText, livesText;
     [SerializeField] private AudioClip dyingSFX;
     [SerializeField] private Image[] hearts;
 
@@ -66,7 +66,7 @@ public class GameSession : MonoBehaviour
 
     }
 
-    private void UpdateHearts()
+    public void UpdateHearts()
     {
         for (int i = 0; i < hearts.Length; i++)
         {
@@ -82,6 +82,7 @@ public class GameSession : MonoBehaviour
 
     private void ResetGame()
     {
+       
         SceneManager.LoadScene(0);
         Destroy(gameObject);
     }

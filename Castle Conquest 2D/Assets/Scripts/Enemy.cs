@@ -26,6 +26,12 @@ public class Enemy : MonoBehaviour
     void Update()
     {
         EnemyMovement();
+
+        if (enemyHitCollider2D.IsTouchingLayers(LayerMask.GetMask("Player")))
+        {
+            FindObjectOfType<Player>().PlayerHit(transform.position.x);
+            print('t');
+        }
     }
 
     public void Dying()
@@ -38,7 +44,6 @@ public class Enemy : MonoBehaviour
 
        StartCoroutine(DestroyEnemy());
     }
-
     IEnumerator DestroyEnemy()
     {
         yield return new WaitForSeconds(3f);
