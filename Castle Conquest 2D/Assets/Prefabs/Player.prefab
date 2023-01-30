@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 415717895}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.82, y: -0.04, z: -0.21231122}
+  m_LocalPosition: {x: 0.441, y: 0.009, z: -0.21231122}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -203,11 +203,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   runSpeed: 8
   jumpSpeed: 12
-  hitKick: {x: 50, y: 30}
+  hitKick: {x: 20, y: 8}
   climbSpeed: 3
   timeHurted: 1.5
   hurtBox: {fileID: 415717896}
-  attackRadius: 3
+  attackRadius: 1.12
   jumpingSFX: {fileID: 8300000, guid: a96e7f9808da96045a55ef228773324c, type: 3}
   atackingSFX: {fileID: 8300000, guid: 44efac7e9351cbd4593579920fea3f6f, type: 3}
   hitSFX: {fileID: 8300000, guid: 5c938d749b535f34393d33611d1ec91d, type: 3}

@@ -105,7 +105,7 @@ public class Player : MonoBehaviour
     public void PlayerHit()
     {
         FindObjectOfType<GameSession>().ProcessPlayerDeath();
-        myRigidbody2D.velocity = hitKick * new Vector2(-transform.localScale.x, 1f);
+        myRigidbody2D.velocity = hitKick * new Vector2(transform.localScale.x, 1f);
         AudioSource.PlayClipAtPoint(hitSFX, Camera.main.transform.position);
         playerAnimator.SetTrigger("Hitting");
         isHurting = true;
